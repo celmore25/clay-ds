@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='easydstools',
-      version='0.0.2',
+      version='0.0.3',
       description='Data Science toolkit I use a lot',
       url='https://github.com/celmore25/clay-ds/',
       author='Clay Elmore',
