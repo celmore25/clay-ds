@@ -10,7 +10,7 @@ def rf_results(model, X_test, y_pred_test, y_test, y_pred_train, y_train, verbos
     """Basic results to random forest classifier
 
     Args:
-        model (sklearn): ML model
+        model (sklearn): ML model from scikit learn
         X_test (pd.df): testing features
         y_pred_test (pd.df): predictions
         y_test (list): testing dependent variable
