@@ -19,8 +19,13 @@ jobs:
         run: pip install build
       - name: Build a binary wheel and a source tarball
         run: python -m build --sdist --wheel --outdir dist/ .
-      - name: LS
+      - name: Check directory list
         run: ls
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.test_pypi_password }}
+          repository_url: https://test.pypi.org/legacy/
 
   # # builds a docker container and pushes to heroku
   # build:
