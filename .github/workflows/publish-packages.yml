@@ -21,25 +21,13 @@ jobs:
         run: python -m build --sdist --wheel --outdir dist/ .
       - name: Check directory list
         run: ls
-      - name: Publish to PyPI
+      - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.test_pypi_password }}
           repository_url: https://test.pypi.org/legacy/
-
-  # # builds a docker container and pushes to heroku
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Docker Login
-  #       env:
-  #         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  #       run: docker login --username celmore25@gmail.com -p ${HEROKU_API_KEY} registry.heroku.com
-  #     - name: Docker Build
-  #       run: |
-  #             echo registry.heroku.com/snakeweb/web
-  #             docker build -t registry.heroku.com/snakeweb/web .
-  #     - name: Push Docker Image
-  #       run: |
-  #             docker push registry.heroku.com/snakeweb/web
+      - name: Publish distribution 📦 to Production PyPI
+        if: startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.pypi_password }}
