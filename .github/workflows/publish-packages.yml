@@ -19,6 +19,8 @@ jobs:
         run: pip install build
       - name: Build a binary wheel and a source tarball
         run: python -m build --sdist --wheel --outdir dist/ .
+      - name: LS
+        run: ls
 
   # # builds a docker container and pushes to heroku
   # build:
